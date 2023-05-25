@@ -35,6 +35,30 @@ class App extends Component {
 			<div className="app">
 				<TodoForm taskCounter={this.state.taskCounter} onAdd={this.addItem} />
 				<TodoList data={this.state.tasks} onDelete ={this.deleteItem}/>
+
+				<div class="background">
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+				
 			</div>
 		);
 	}
