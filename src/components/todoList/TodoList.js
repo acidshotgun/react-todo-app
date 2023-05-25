@@ -6,7 +6,7 @@ import './todoList.scss';
 class TodoList extends Component {
     
     render() {
-        const {data} = this.props;
+        const {data, onDelete} = this.props;
 
         const elements = data.map(item => {
             const {id, ...itemProps} = item;
@@ -15,14 +15,15 @@ class TodoList extends Component {
                 <TodoListItem 
                     key={id}
                     {...itemProps}
+                    onDelete={() => onDelete(id)}
                 />
             )
         })
 
         return(
-           <div className="list">
+           <ul className="list">
                 {elements}
-           </div> 
+           </ul> 
         )
     }
 }

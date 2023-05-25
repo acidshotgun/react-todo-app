@@ -4,20 +4,31 @@ import accept from '../../resources/accept.png';
 import './todoListItem.scss';
 
 class TodoListItem extends Component {
+    state = {
+        progress: false,
+    }
+
+    changeStatus = () => {
+        this.setState({
+            progress: (!this.state.progress)
+        })
+    }
+
     render() {
-        const {name} = this.props;
+        const {name, onDelete} = this.props;
+        const status = this.state.progress ? 'task__status green' : 'task__status';
 
         return(
-            <div className="task">
+            <li className="task">
                 <div className="task__item">
-                    <div className="task__status"></div>
+                    <div className={status}></div>
                     <div className="task__name">{name}</div>
-                    <div className="task__accept">
+                    <div className="task__accept" onClick={this.changeStatus}>
                         <img src={accept} alt="accept"></img>
                     </div>
-                    <button className="task__delete">Delete</button>
+                    <button onClick={onDelete} className="task__delete">Delete</button>
                 </div>
-            </div>
+            </li>
         )
     }
 }

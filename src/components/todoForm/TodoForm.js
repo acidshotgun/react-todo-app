@@ -12,20 +12,26 @@ class TodoForm extends Component {
         });
     }
     
-    onSubmitValues = (event) => {
+    SubmitValues = (event) => {
         event.preventDefault();
 
-        this.props.onAdd(this.state.task);
-        this.setState({
-            task: '',
-        })
+        if (this.state.task) {
+            this.props.onAdd(this.state.task);
+            this.setState({
+                task: '',
+            })
+        }
     }
 
     render() {
+        const {taskCounter} =this.props;
+
+        const foundTasks = (taskCounter > 0) ? <div className="todo__notask">Tasks: {taskCounter}</div> : <div className="todo__notask">No task found</div>;
+
         return(
             <div className="todo">
                 <div className="todo__name">ZHEGULOV TASK</div>
-                <form onSubmit={this.onSubmitValues} className="todo__form">
+                <form onSubmit={this.SubmitValues} className="todo__form">
                     <input
                         type="text" 
                         name="task"
@@ -35,7 +41,7 @@ class TodoForm extends Component {
                     />
                     <button>Add</button>
                 </form>
-                <div className="todo__notask">No task found</div>
+                {foundTasks}
             </div>
         )
     }
