@@ -30,11 +30,38 @@ class App extends Component {
 		})
 	}
 
+	// Метод заменяет св-во status в state у определенного элемента по id
+	// Синтаксис [prop] позваляет вытащить зн-е из data-атрибута который передается
+	// data-атрибут стоит у item
+	onToggleStatus = (id, prop) => {
+		this.setState(({tasks}) => ({
+			tasks: tasks.map(item => {
+				if (item.id === id) {
+					return {...item, [prop]: !item[prop]}
+				}
+
+				return item;
+			})
+		}))
+	}
+
 	render() {
+		// В переменную записывается число - это длина массива где записаны только ообъекты у которых status = true
+		const completedTusks = this.state.tasks.filter(item => item.status).length;
+
 		return (
 			<div className="app">
-				<TodoForm taskCounter={this.state.taskCounter} onAdd={this.addItem} />
-				<TodoList data={this.state.tasks} onDelete ={this.deleteItem}/>
+				<TodoForm 
+					taskCounter={this.state.taskCounter} 
+					onAdd={this.addItem} 
+					completedTusks={completedTusks}
+				/>
+				<TodoList 
+					data={this.state.tasks} 
+					onDelete={this.deleteItem}
+					onToggleStatus={this.onToggleStatus}
+					getComplitedTusks={this.getComplitedTusks}
+				/>
 
 				<div class="background">
 					<span></span>
@@ -58,7 +85,6 @@ class App extends Component {
 					<span></span>
 					<span></span>
 				</div>
-				
 			</div>
 		);
 	}

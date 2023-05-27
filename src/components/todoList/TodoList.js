@@ -6,7 +6,7 @@ import './todoList.scss';
 class TodoList extends Component {
     
     render() {
-        const {data, onDelete} = this.props;
+        const {data, onDelete, onToggleStatus} = this.props;
 
         const elements = data.map(item => {
             const {id, ...itemProps} = item;
@@ -16,6 +16,7 @@ class TodoList extends Component {
                     key={id}
                     {...itemProps}
                     onDelete={() => onDelete(id)}
+                    onToggleStatus={(event) => onToggleStatus(id, event.currentTarget.getAttribute('data-toggle'))}
                 />
             )
         })

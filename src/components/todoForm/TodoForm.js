@@ -24,9 +24,9 @@ class TodoForm extends Component {
     }
 
     render() {
-        const {taskCounter} =this.props;
-
-        const foundTasks = (taskCounter > 0) ? <div className="todo__notask">Tasks: {taskCounter}</div> : <div className="todo__notask">No task found</div>;
+        const {taskCounter, completedTusks} = this.props;
+        const foundTasks = (taskCounter > 0) ? `Tasks: ${taskCounter}` : 'No task found';
+        const complete = (taskCounter > 0) ? `Completed tasks: ${completedTusks}` : null
 
         return(
             <div className="todo">
@@ -41,7 +41,10 @@ class TodoForm extends Component {
                     />
                     <button>Add</button>
                 </form>
-                {foundTasks}
+                <div className="todo__progress">
+                    <div className="todo__notask">{foundTasks}</div>
+                    <div className="todo__completed">{complete}</div>
+                </div>
             </div>
         )
     }
