@@ -1,5 +1,6 @@
 <h1>React todo app</h1>
 
+- [x] App.js хранит таски и их кол-во в state.
 
 
 <h2>Main</h2>
