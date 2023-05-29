@@ -22,9 +22,11 @@ class TodoList extends Component {
         })
 
         return(
-           <ul className="list">
-                {elements}
-           </ul> 
+           <div className="list">
+                <ul className="list__container">
+                    {elements}
+                </ul> 
+           </div>
         )
     }
 }

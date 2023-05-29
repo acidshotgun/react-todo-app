@@ -1,7 +1,11 @@
 .list {
-    display: block;
-    margin: 0 auto;
-    max-width: 1200px;
-    list-style: none;
-    padding: 0;
+    padding: 20px;
+    &__container {
+        display: block;
+        margin-left: 30px;
+        margin: 0 auto;
+        max-width: 1200px;
+        list-style: none;
+        padding: 0;
+    }
 }
