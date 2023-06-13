@@ -12,8 +12,6 @@ class App extends Component {
 		taskCounter: 0,
 	}
 
-	// localTasks = JSON.stringify(this.state.tasks);
-        
 	addItem = (newTask) => {
 		this.setState(({tasks, taskCounter}) => {
 			return {
@@ -21,12 +19,6 @@ class App extends Component {
 				taskCounter: taskCounter + 1,
 			}
 		})
-
-		// let testTest = () => {
-		// 	localStorage.setItem("tasks", JSON.stringify(this.state.tasks));
-		// }
-
-		// setTimeout(testTest, 3000)
 	}
 
 	deleteItem = (id) => {
