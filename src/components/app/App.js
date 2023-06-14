@@ -1,5 +1,5 @@
-import { useState } from "react";
-import nextId from "react-id-generator";
+import { useState, useEffect } from "react";
+// import nextId from "react-id-generator";
 
 // content
 import video from '../../resources/kurt.mp4';
@@ -10,11 +10,22 @@ import TodoList from "../todoList/TodoList";
 import './app.scss';
 
 const App = () => {
-	const [tasks, setTasks] = useState([]);
-	const [taskCounter, setTaskCounter] = useState(0);
+	// Начальное значение либо получается из local storage либо пустой массив
+	const [tasks, setTasks] = useState(() => {
+		const dataInLocalStorage = localStorage.getItem('tasks');
+		const fromLocalToRender = JSON.parse(dataInLocalStorage);
+		return fromLocalToRender || [];
+	});
+	// Кол-во тасков - это длина tasks
+	const [taskCounter, setTaskCounter] = useState(tasks.length);
+
+	// Когда состояние tasks меняется обновляется tasks в LS
+	useEffect(() => {
+		localStorage.setItem('tasks', JSON.stringify(tasks))
+	}, [tasks]);
 
 	const addItem = (newTask) => {
-		setTasks(tasks => [...tasks, {name: newTask, status: false, id: nextId()}]);
+		setTasks(tasks => [...tasks, {name: newTask, status: false, id: newTask}]);
 		setTaskCounter(taskCounter =>  taskCounter + 1);
 	}
 
@@ -62,3 +73,10 @@ const App = () => {
 }
 
 export default App;
+
+
+
+// useEffect(() => {
+// 	const raw = localStorage.getItem('tasks') || JSON.stringify([])
+// 	setTasks(JSON.parse(raw));
+// }, [])
