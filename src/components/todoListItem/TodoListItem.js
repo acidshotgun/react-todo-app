@@ -1,11 +1,9 @@
-import { Component } from "react";
 import accept from '../../resources/accept.png';
 
 import './todoListItem.scss';
 
-const TodoListItem = (props) => {
+const TodoListItem = ({name, status, onDelete, onToggleStatus}) => {
 
-    const {name, status, onDelete, onToggleStatus} = props;
     const ready = (status) ? 'task__status green' : 'task__status';
 
     return(

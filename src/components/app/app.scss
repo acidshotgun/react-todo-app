@@ -23,7 +23,7 @@
     overflow: hidden;
     z-index: -1;
     &__video {
-        width: 100%;
+        min-width: 100vw;
     }
 }
 

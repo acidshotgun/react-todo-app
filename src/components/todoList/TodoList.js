@@ -1,11 +1,8 @@
-import { Component } from "react";
 import TodoListItem from "../todoListItem/TodoListItem";
 
 import './todoList.scss';
 
-const TodoList = (props) => {
-
-    const {data, onDelete, onToggleStatus} = props;
+const TodoList = ({data, onDelete, onToggleStatus}) => {
 
     const elements = data.map(item => {
         const {id, ...itemProps} = item;
