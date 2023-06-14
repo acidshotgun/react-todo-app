@@ -15,7 +15,7 @@
 
 - [ ] Описание???
 - [x] Аним фон????
-- [ ] local storage + useEffect()
+- [x] local storage + useEffect()
 
 и тд
 
