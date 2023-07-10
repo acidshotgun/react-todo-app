@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-// import nextId from "react-id-generator";
+import { v4 as uuidv4 } from 'uuid';
 
 // content
 import video from '../../resources/kurt.mp4';
@@ -11,11 +11,7 @@ import './app.scss';
 
 const App = () => {
 	// Начальное значение либо получается из local storage либо пустой массив
-	const [tasks, setTasks] = useState(() => {
-		const dataInLocalStorage = localStorage.getItem('tasks');
-		const fromLocalToRender = JSON.parse(dataInLocalStorage);
-		return fromLocalToRender || [];
-	});
+	const [tasks, setTasks] = useState(JSON.parse(localStorage.getItem('tasks')) || []);
 	// Кол-во тасков - это длина tasks
 	const [taskCounter, setTaskCounter] = useState(tasks.length);
 
@@ -25,7 +21,7 @@ const App = () => {
 	}, [tasks]);
 
 	const addItem = (newTask) => {
-		setTasks(tasks => [...tasks, {name: newTask, status: false, id: newTask}]);
+		setTasks(tasks => [...tasks, {name: newTask, status: false, id: uuidv4()}]);
 		setTaskCounter(taskCounter =>  taskCounter + 1);
 	}
 

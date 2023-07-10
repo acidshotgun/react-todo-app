@@ -1,10 +1,14 @@
 .list {
-    padding: 20px;
+    padding-top: 20px;
+    margin: 0 auto;
+    max-width: 800px;
+    &__filters {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+    }
     &__container {
         display: block;
-        margin-left: 30px;
-        margin: 0 auto;
-        max-width: 1200px;
         list-style: none;
         padding: 0;
     }
