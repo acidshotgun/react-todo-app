@@ -5,11 +5,14 @@
     &__filters {
         margin: 0 auto;
         display: flex;
-        justify-content: center;
+        justify-content: space-around;
+        max-width: 500px;
     }
     &__container {
         display: block;
         list-style: none;
         padding: 0;
+        // overflow: hidden;
+        margin: 0;
     }
 }
