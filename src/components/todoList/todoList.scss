@@ -1,18 +1,33 @@
 .list {
-    padding-top: 20px;
+  padding-top: 20px;
+  margin: 0 auto;
+  max-width: 800px;
+  &__filters {
     margin: 0 auto;
-    max-width: 800px;
-    &__filters {
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        max-width: 500px;
-    }
-    &__container {
-        display: block;
-        list-style: none;
-        padding: 0;
-        // overflow: hidden;
-        margin: 0;
-    }
+    display: flex;
+    justify-content: space-around;
+    max-width: 500px;
+  }
+  &__container {
+    display: block;
+    list-style: none;
+    padding: 0;
+    // overflow: hidden;
+    margin: 0;
+  }
+}
+
+.list__item-enter {
+  opacity: 0;
+}
+.list__item-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.list__item-exit {
+  opacity: 1;
+}
+.list__item-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-in;
 }

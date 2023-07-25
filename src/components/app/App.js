@@ -21,13 +21,13 @@ const App = () => {
 	}, [tasks]);
 
 	const addItem = (newTask) => {
-		setTasks(tasks => [...tasks, {name: newTask, status: false, id: uuidv4()}]);
-		setTaskCounter(taskCounter =>  taskCounter + 1);
+		setTasks(tasks => [...tasks, { name: newTask, status: false, id: uuidv4() }]);
+		setTaskCounter(taskCounter => taskCounter + 1);
 	}
 
 	const deleteItem = (id) => {
 		setTasks(tasks => tasks.filter(item => item.id !== id));
-		setTaskCounter(taskCounter =>  taskCounter - 1);
+		setTaskCounter(taskCounter => taskCounter - 1);
 	}
 
 	// Метод заменяет св-во status в state у определенного элемента по id
@@ -36,7 +36,7 @@ const App = () => {
 	const onToggleStatus = (id, prop) => {
 		setTasks(tasks => tasks.map(item => {
 			if (item.id === id) {
-				return {...item, [prop]: !item[prop]}
+				return { ...item, [prop]: !item[prop] }
 			}
 
 			return item;
@@ -48,13 +48,13 @@ const App = () => {
 
 	return (
 		<div className="app">
-			<TodoForm 
-				taskCounter={taskCounter} 
-				onAdd={addItem} 
+			<TodoForm
+				taskCounter={taskCounter}
+				onAdd={addItem}
 				completedTusks={completedTusks}
 			/>
-			<TodoList 
-				data={tasks} 
+			<TodoList
+				data={tasks}
 				onDelete={deleteItem}
 				onToggleStatus={onToggleStatus}
 			/>
